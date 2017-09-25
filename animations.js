@@ -16,14 +16,6 @@ $(".content").hover(function(){
 	$("ul").slideUp("fast");
 });
 
-// $(".content").live("hover", function(){
-// 	$("ul", this).slideDown("fast");
-// }, function(){
-// 	$("ul").slideUp("fast");
-// });
-
-
-
 var maxChar = $("#char-count").html();
 
 $(".tweet-compose").keypress(function(){
@@ -50,20 +42,20 @@ $(".tweet-compose").keyup(function(e){
 	}
 });
 
-
-
-
 $("#tweet-submit").click(function(){
-	var layout = $("#stream div").first().html();
-	var layout2 = $("<div></div>").html(layout);
-	$("#stream").prepend(layout2);
-	$("#stream div").first().addClass("tweet");
-	$("#stream img").first().attr("src", "img/alagoon.jpg");
-	$("#stream p").first().html($("#tweet-content textarea").first().val());
-	$("#stream strong").first().html($("#profile-summary p").first().html());
-	$("#tweet-content textarea").first().val("");
-	$(".tweet-compose").css("height", "2.5em");
-	$("#char-count").html(maxChar);
+	if($("#tweet-content textarea").first().val() !== ""){
+		var layout = $("#stream div").first().html();
+		var layout2 = $("<div></div>").html(layout);
+		$("#stream").prepend(layout2);
+		$("#stream div").first().addClass("tweet");
+		$("#stream img").first().attr("src", "img/alagoon.jpg");
+		$("#stream p").first().html($("#tweet-content textarea").first().val());
+		$("#stream strong").first().html($("#profile-summary p").first().html());
+		$("#tweet-content textarea").first().val("");
+		$(".tweet-compose").css("height", "2.5em");
+		$("#char-count").html(maxChar);
+	}
+	
 });
 
 
